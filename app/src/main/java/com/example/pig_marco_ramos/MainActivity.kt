@@ -1,11 +1,9 @@
 package com.example.pig_marco_ramos
 
-import android.animation.ValueAnimator
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pig_marco_ramos.databinding.ActivityMainBinding
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,24 +18,18 @@ class MainActivity : AppCompatActivity() {
 
         val animDuration: Long = 450
 
-        binding.imageView.setOnClickListener {
-            val random = (Random.nextInt(0, 6) + 1)
+        val players = arrayOf(
+            Player("Jugador 1", binding.playerOneText, binding.playerOneHold),
+            Player("Jugador 2", binding.playerTwoText,binding.playerTwoHold),
+            Player("Jugador 3", binding.playerThreeText,binding.playerThreeHold),
+            Player("Jugador 4", binding.playerFourText,binding.playerFourHold))
 
-            val valueAnimator = ValueAnimator.ofInt(1, random)
-
-            valueAnimator.addUpdateListener {
-                binding.textView.text = valueAnimator.animatedValue.toString()
+        for (player in players) {
+            player.holdButton.setOnClickListener {
+                player.label.text = player.name
             }
+        }
 
-            valueAnimator.setDuration(animDuration)
 
-            if (ronda >= 5) {
-                binding.textView.text = "Se acabo el juego"
-            } else {
-                binding.textView.text = random.toString()
-                valueAnimator.start()
-                ronda += 1
-            }
-        }   // onClickListener
     }   // onCreate
 }
