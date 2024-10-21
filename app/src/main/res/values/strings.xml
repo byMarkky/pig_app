@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Pig_Marco_Ramos</string>
     <string name="diceBtn">Tirar Dado</string>
+    <string name="diceStartNumber">1</string>
 </resources>

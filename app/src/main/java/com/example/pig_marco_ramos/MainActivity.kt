@@ -1,18 +1,16 @@
 package com.example.pig_marco_ramos
 
-import android.annotation.SuppressLint
+import android.animation.ValueAnimator
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pig_marco_ramos.databinding.ActivityMainBinding
-import kotlin.properties.Delegates
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,15 +18,26 @@ class MainActivity : AppCompatActivity() {
         var ronda = 0
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
-            if (ronda >= 5) {
-                binding.text.text = "Se acabo el juego"
-            } else {
-                binding.text.text = (Random.nextInt(0, 6) + 1).toString()
-                ronda += 1
+        val animDuration: Long = 450
+
+        binding.imageView.setOnClickListener {
+            val random = (Random.nextInt(0, 6) + 1)
+
+            val valueAnimator = ValueAnimator.ofInt(1, random)
+
+            valueAnimator.addUpdateListener {
+                binding.textView.text = valueAnimator.animatedValue.toString()
             }
 
-        }
+            valueAnimator.setDuration(animDuration)
 
-    }
+            if (ronda >= 5) {
+                binding.textView.text = "Se acabo el juego"
+            } else {
+                binding.textView.text = random.toString()
+                valueAnimator.start()
+                ronda += 1
+            }
+        }   // onClickListener
+    }   // onCreate
 }
