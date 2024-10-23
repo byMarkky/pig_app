@@ -9,38 +9,55 @@ import android.widget.PopupWindow
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pig_marco_ramos.databinding.ActivityMainBinding
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var currentPlayer: Player
+    private var currentPlayerIndex = 0
+    private lateinit var players: Array<Player>
+    private var ronda = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
-        var ronda = 1
         setContentView(binding.root)
 
         val animDuration: Long = 450
 
         binding.roudnCounter.text = "Ronda $ronda"
 
-        val players = arrayOf(
-            Player("Jugador 1", binding.playerOneText, binding.playerOneHold),
-            Player("Jugador 2", binding.playerTwoText,binding.playerTwoHold),
-            Player("Jugador 3", binding.playerThreeText,binding.playerThreeHold),
-            Player("Jugador 4", binding.playerFourText,binding.playerFourHold)
+        players = arrayOf(
+            Player("Jugador 1", binding.playerOneText, binding.playerOneHold, binding.playerOneCounter),
+            Player("Jugador 2", binding.playerTwoText, binding.playerTwoHold, binding.playerTwoCounter),
+            Player("Jugador 3", binding.playerThreeText, binding.playerThreeHold, binding.playerThreeCounter),
+            Player("Jugador 4", binding.playerFourText, binding.playerFourHold, binding.playerFourCounter)
         )
 
+        currentPlayer = players[currentPlayerIndex]
+
         for (player in players) {
-            player.holdButton.setOnClickListener {
-                holded()
-            }
+            player.holdButton.setOnClickListener { holded() }
         }
+
+        binding.imageView.setOnClickListener {
+            currentPlayer.currentPoints += 1
+            currentPlayer.currentPointsCounter.text = currentPlayer.currentPoints.toString()
+        }
+
     }   // onCreate
 
     private fun holded(){
+        currentPlayerIndex += 1
+
+        if (currentPlayerIndex > players.size - 1) {
+            currentPlayerIndex = 0
+            ronda += 1
+            binding.roudnCounter.text = String.format("Ronda %d", ronda)
+        }
+
+        currentPlayer = players[currentPlayerIndex]
     }
 
     private fun changeUserName() {
