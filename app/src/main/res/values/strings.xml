@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Pig_Marco_Ramos</string>
-    <string name="round_counter">Ronda 1</string>
+    <string name="round_counter">Round 1</string>
     <string name="hold_button">Hold</string>
+    <string name="currentPoints">Points</string>
+    <string name="totalPoints">Total</string>
 </resources>
