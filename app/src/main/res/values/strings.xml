@@ -4,4 +4,7 @@
     <string name="hold_button">Hold</string>
     <string name="currentPoints">Points</string>
     <string name="totalPoints">Total</string>
+    <string name="congratsText">Congratulations!!</string>
+    <string name="welcomeText">Select how many players are</string>
+    <string name="playButton">Play!</string>
 </resources>

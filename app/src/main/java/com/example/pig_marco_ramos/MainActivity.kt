@@ -1,14 +1,12 @@
 package com.example.pig_marco_ramos
 
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.PopupWindow
+import android.widget.SeekBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.transition.Visibility
 import com.example.pig_marco_ramos.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -28,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // TODO("Implement the startup function")
+
+        binding.startLayout.visibility = View.VISIBLE
+        binding.gameLayout.visibility = View.GONE
+
         binding.roudnCounter.text = roundStr + ronda
 
         players = arrayOf(
@@ -38,6 +41,19 @@ class MainActivity : AppCompatActivity() {
         )
 
         currentPlayer = players[currentPlayerIndex]
+
+        binding.playerSelector.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                binding.textView11.text = (p1 + 1).toString()
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+            }
+
+        })
 
         binding.holdButton.setOnClickListener { holded() }
 
@@ -61,6 +77,12 @@ class MainActivity : AppCompatActivity() {
         if (currentPlayerIndex > players.size - 1) {
             currentPlayerIndex = 0
             ronda += 1
+
+            if (ronda > 5) {
+                evaluateWinner()
+                return
+            }
+
             binding.roudnCounter.text = String.format("%s %d", roundStr, ronda)
         }
 
@@ -73,6 +95,16 @@ class MainActivity : AppCompatActivity() {
         currentPlayer.currentPointsCounter.text = "0"
 
         currentPlayer = players[currentPlayerIndex]
+    }
+
+    private fun getWinner() = players.maxBy { it.totalPoints }
+
+
+    private fun evaluateWinner() {
+        val winner = getWinner()
+        binding.gameLayout.visibility = View.GONE
+        binding.winnerLabel.text = winner.name + " won!!"
+        binding.winnerLayout.visibility = View.VISIBLE
     }
 
     private fun animateDiceImage(imageView: ImageView, randomNumber: Int) {
