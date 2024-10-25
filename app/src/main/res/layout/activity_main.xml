@@ -70,6 +70,7 @@
 
             <SeekBar
                 android:id="@+id/playerSelector"
+                style="@style/Widget.AppCompat.SeekBar"
                 android:layout_width="146dp"
                 android:layout_height="18dp"
                 android:backgroundTint="#FFFFFF"
@@ -516,12 +517,14 @@
             <TextView
                 android:id="@+id/roudnCounter"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:background="#FFFFFF"
+                android:gravity="center"
                 android:text="@string/round_counter"
                 android:textAlignment="center"
                 android:textColor="@color/red_title"
-                android:textSize="32sp"
+                android:textSize="34sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
