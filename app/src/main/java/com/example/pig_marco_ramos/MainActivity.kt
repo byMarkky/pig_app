@@ -49,11 +49,13 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.playButton.setOnClickListener {
+            // Add and activate the players of the game
             for (i in 0..<nPlayers) {
                 defaultPlayers[i].disable = false
                 players.add(i, defaultPlayers[i])
             }
 
+            // Switch the screen by changing the visibility
             binding.startLayout.visibility = View.GONE
             binding.gameLayout.visibility = View.VISIBLE
 
@@ -62,6 +64,9 @@ class MainActivity : AppCompatActivity() {
 
     }   // onCreate
 
+    /**
+     * Method to start the game logic
+     */
     private fun startGame() {
 
         binding.startLayout.visibility = View.GONE
@@ -73,9 +78,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.holdButton.setOnClickListener { holded() }
 
-        binding.imageView.setOnClickListener {
+        /**
+         * When image of the dice is press, generate a random number
+         * between 1 and 6, and put the corresponding dice image
+         * in the dice imageView.
+         * Also add the number to the current player current points
+         */
+        binding.dice.setOnClickListener {
             val random = Random.nextInt(0, 6) + 1
-            animateDiceImage(binding.imageView, random)
+            animateDiceImage(binding.dice, random)
             if (random == 1) {
                 currentPlayer.currentPoints = 0
             } else {
@@ -85,6 +96,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Method to change which user will play the turn
+     */
     private fun holded(){
 
         currentPlayerIndex += 1
@@ -94,7 +108,7 @@ class MainActivity : AppCompatActivity() {
             ronda += 1
 
             if (ronda > 5) {
-                evaluateWinner()
+                displayWinner()
                 return
             }
 
@@ -112,16 +126,24 @@ class MainActivity : AppCompatActivity() {
         currentPlayer = players[currentPlayerIndex]
     }   // holded
 
+    /**
+     * Method to determine which player won the game
+     */
     private fun getWinner() = players.maxBy { it.totalPoints }
 
-
-    private fun evaluateWinner() {
+    /**
+     * Method to display the winner screen with the name of the player
+     */
+    private fun displayWinner() {
         val winner = getWinner()
         binding.gameLayout.visibility = View.GONE
         binding.winnerLabel.text = winner.name + " won!!"
         binding.winnerLayout.visibility = View.VISIBLE
     }
 
+    /**
+     * Method to display the dice face
+     */
     private fun animateDiceImage(imageView: ImageView, randomNumber: Int) {
 
         val diceImages = arrayOf(R.drawable.dice_1, R.drawable.dice_2, R.drawable.dice_3, R.drawable.dice_4, R.drawable.dice_5, R.drawable.dice_6)
