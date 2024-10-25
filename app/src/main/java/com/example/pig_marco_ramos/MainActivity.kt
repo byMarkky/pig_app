@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.transition.Visibility
 import com.example.pig_marco_ramos.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -15,10 +14,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var currentPlayer: Player
+    private lateinit var defaultPlayers: Array<Player>
+    private var players : MutableList<Player> = mutableListOf()
     private var currentPlayerIndex = 0
-    private lateinit var players: Array<Player>
     private var ronda = 1
     private val roundStr = "Round "
+    private var nPlayers = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,25 +27,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO("Implement the startup function")
-
-        binding.startLayout.visibility = View.VISIBLE
-        binding.gameLayout.visibility = View.GONE
-
-        binding.roudnCounter.text = roundStr + ronda
-
-        players = arrayOf(
-            Player("Jugador 1", binding.playerOneText, binding.playerOneCounter, binding.playerOnePoints),
-            Player("Jugador 2", binding.playerTwoText, binding.playerTwoCounter, binding.playerTwoPoints),
-            Player("Jugador 3", binding.playerThreeText, binding.playerThreeCounter, binding.playerThreePoints),
-            Player("Jugador 4", binding.playerFourText, binding.playerFourCounter, binding.playerFourPoints)
+        // Just the default players
+        defaultPlayers = arrayOf(
+            Player("Player 1", binding.playerOneText, binding.playerOneCounter, binding.playerOnePoints, true),
+            Player("Player 2", binding.playerTwoText, binding.playerTwoCounter, binding.playerTwoPoints, true),
+            Player("Player 3", binding.playerThreeText, binding.playerThreeCounter, binding.playerThreePoints, true),
+            Player("Player 4", binding.playerFourText, binding.playerFourCounter, binding.playerFourPoints, true)
         )
-
-        currentPlayer = players[currentPlayerIndex]
 
         binding.playerSelector.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                binding.textView11.text = (p1 + 1).toString()
+                nPlayers = p1 + 2
+                binding.textView11.text = nPlayers.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -52,8 +46,30 @@ class MainActivity : AppCompatActivity() {
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
             }
-
         })
+
+        binding.playButton.setOnClickListener {
+            for (i in 0..<nPlayers) {
+                defaultPlayers[i].disable = false
+                players.add(i, defaultPlayers[i])
+            }
+
+            binding.startLayout.visibility = View.GONE
+            binding.gameLayout.visibility = View.VISIBLE
+
+            startGame()
+        }
+
+    }   // onCreate
+
+    private fun startGame() {
+
+        binding.startLayout.visibility = View.GONE
+        binding.gameLayout.visibility = View.VISIBLE
+
+        binding.roudnCounter.text = roundStr + ronda
+
+        currentPlayer = players[currentPlayerIndex]
 
         binding.holdButton.setOnClickListener { holded() }
 
@@ -67,8 +83,7 @@ class MainActivity : AppCompatActivity() {
             }
             currentPlayer.currentPointsCounter.text = currentPlayer.currentPoints.toString()
         }
-
-    }   // onCreate
+    }
 
     private fun holded(){
 
@@ -95,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         currentPlayer.currentPointsCounter.text = "0"
 
         currentPlayer = players[currentPlayerIndex]
-    }
+    }   // holded
 
     private fun getWinner() = players.maxBy { it.totalPoints }
 
