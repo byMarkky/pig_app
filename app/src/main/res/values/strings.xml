@@ -8,6 +8,7 @@
     <string name="welcomeText">Select how many players are</string>
     <string name="playButton">Play!</string>
     <string name="selectPlayers">Select the number of players:</string>
+    <string name="selectRounds">Select the number of rounds:</string>
     <string name="selectPlayersButton">Select</string>
 
 

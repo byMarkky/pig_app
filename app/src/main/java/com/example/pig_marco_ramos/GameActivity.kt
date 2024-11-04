@@ -1,5 +1,6 @@
 package com.example.pig_marco_ramos
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -14,6 +15,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var currentPlayer: Player
     private lateinit var defaultPlayers: Array<Player>
     private var players : MutableList<Player> = mutableListOf()
+    private var ranking: MutableList<Player> = mutableListOf()
     private var currentPlayerIndex = 0
     private var ronda = 1
     private val roundStr = "Round "
@@ -51,8 +53,10 @@ class GameActivity : AppCompatActivity() {
     private fun configPlayers() {
         // Add and activate the players of the game
         for (i in 0..<nPlayers) {
+            val name = intent.getStringExtra("PLAYER_$i")
             defaultPlayers[i].disable = false
-            defaultPlayers[i].label.text = intent.getStringExtra("PLAYER_$i")
+            defaultPlayers[i].label.text = name
+            defaultPlayers[i].name = name
             println(intent.getStringExtra("PLAYER_$i"))
             players.add(i, defaultPlayers[i])
         }
@@ -103,7 +107,7 @@ class GameActivity : AppCompatActivity() {
             ronda += 1
 
             if (ronda > nRounds) {
-                //displayWinner()
+                displayScores()
                 return
             }
 
@@ -121,10 +125,22 @@ class GameActivity : AppCompatActivity() {
         currentPlayer = players[currentPlayerIndex]
     }   // holded
 
+    private fun displayScores() {
+        getScores()
+        val intent = Intent(this@GameActivity, WinnerActivity::class.java)
+        intent.putExtra("PLAYER_NUMBER", players.size)
+        for (i in 0..<players.size) {
+            intent.putExtra("PLAYER_" + (i + 1) + "_SCORE", players[i].totalPoints)
+            intent.putExtra("PLAYER_" + (i + 1) + "_NAME", players[i].name)
+        }
+        startActivity(intent)
+    }
+
     /**
      * Method to determine which player won the game
      */
-    private fun getWinner() = players.maxBy { it.totalPoints }
+    private fun getScores() = players.sortedBy { it.totalPoints }
+
 
     /**
      * Method to display the dice face
