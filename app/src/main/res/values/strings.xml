@@ -7,4 +7,8 @@
     <string name="congratsText">Congratulations!!</string>
     <string name="welcomeText">Select how many players are</string>
     <string name="playButton">Play!</string>
+    <string name="selectPlayers">Select the number of players:</string>
+    <string name="selectPlayersButton">Select</string>
+
+
 </resources>
