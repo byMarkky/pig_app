@@ -5,7 +5,11 @@ import android.graphics.Color
 import android.widget.TextView
 
 @SuppressLint("ResourceAsColor")
-class Player(var name: String, var label: TextView, var currentPointsCounter: TextView, var totalPointsCounter: TextView, disable: Boolean) {
+class Player(var name: String?, var label: TextView, var currentPointsCounter: TextView, var totalPointsCounter: TextView, disable: Boolean) {
+
+    init {
+        label.text = name
+    }
 
     var totalPoints: Int = 0
 

@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
-                showToast(message = spinnerData[p2].toString())
+                //showToast(message = spinnerData[p2].toString())
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {

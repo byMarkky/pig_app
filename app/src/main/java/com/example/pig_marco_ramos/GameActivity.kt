@@ -17,6 +17,7 @@ class GameActivity : AppCompatActivity() {
     private var currentPlayerIndex = 0
     private var ronda = 1
     private val roundStr = "Round "
+    private var nRounds = 1
     private var nPlayers = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,42 +34,38 @@ class GameActivity : AppCompatActivity() {
             Player("Player 4", binding.playerFourText, binding.playerFourCounter, binding.playerFourPoints, true)
         )
 
-        binding.playerSelector.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                nPlayers = p1 + 2
-                binding.textView11.text = nPlayers.toString()
-            }
+        nPlayers = intent.getIntExtra("PLAYER_NUMBER", 2)
+        nRounds = intent.getStringExtra("ROUND_NUMBER")?.toIntOrNull()!!    // Parse from String? to Int
+        println("nPlayers: $nPlayers")
+        println("nRounds: $nRounds")
 
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-            }
-
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-            }
-        })
-
-        binding.playButton.setOnClickListener {
-            // Add and activate the players of the game
-            for (i in 0..<nPlayers) {
-                defaultPlayers[i].disable = false
-                players.add(i, defaultPlayers[i])
-            }
-
-            // Switch the screen by changing the visibility
-            binding.startLayout.visibility = View.GONE
-            binding.gameLayout.visibility = View.VISIBLE
-
-            startGame()
-        }
+        configPlayers()
+        startGame()
 
     }   // onCreate
+
+    private fun shufflePlayers() {
+        players.shuffle()
+    }
+
+    private fun configPlayers() {
+        // Add and activate the players of the game
+        for (i in 0..<nPlayers) {
+            defaultPlayers[i].disable = false
+            defaultPlayers[i].label.text = intent.getStringExtra("PLAYER_$i")
+            println(intent.getStringExtra("PLAYER_$i"))
+            players.add(i, defaultPlayers[i])
+        }
+    }
 
     /**
      * Method to start the game logic
      */
     private fun startGame() {
 
-        binding.startLayout.visibility = View.GONE
-        binding.gameLayout.visibility = View.VISIBLE
+        for (i in 0..<players.size) {
+            println(players[i])
+        }
 
         binding.roudnCounter.text = roundStr + ronda
 
@@ -105,8 +102,8 @@ class GameActivity : AppCompatActivity() {
             currentPlayerIndex = 0
             ronda += 1
 
-            if (ronda > 5) {
-                displayWinner()
+            if (ronda > nRounds) {
+                //displayWinner()
                 return
             }
 
@@ -128,16 +125,6 @@ class GameActivity : AppCompatActivity() {
      * Method to determine which player won the game
      */
     private fun getWinner() = players.maxBy { it.totalPoints }
-
-    /**
-     * Method to display the winner screen with the name of the player
-     */
-    private fun displayWinner() {
-        val winner = getWinner()
-        binding.gameLayout.visibility = View.GONE
-        binding.winnerLabel.text = winner.name + " won!!"
-        binding.winnerLayout.visibility = View.VISIBLE
-    }
 
     /**
      * Method to display the dice face
