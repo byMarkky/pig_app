@@ -23,7 +23,6 @@ class CustomAdapter(
             textView = view.findViewById(R.id.playerNameTemplate)
             textView.setOnClickListener {
                 onItemSelected(index, true, textView.text.toString())
-                Toast.makeText(textView.context, textView.text, Toast.LENGTH_SHORT).show()
             }
         }
 
