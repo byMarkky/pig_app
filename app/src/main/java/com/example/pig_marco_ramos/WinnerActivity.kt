@@ -2,6 +2,7 @@ package com.example.pig_marco_ramos
 
 import android.os.Build
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -19,20 +20,22 @@ class WinnerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val nPlayers = intent.getIntExtra("PLAYER_NUMBER", 2)
-        val players: MutableList<String> = mutableListOf()
-        val scores: MutableList<Int> = mutableListOf()
+        val players: MutableList<PlayerDClass?> = mutableListOf()
+        val labels: MutableList<TextView> = mutableListOf(binding.winner, binding.second, binding.third, binding.four)
 
         for (i in 0..<nPlayers) {
-            val name: String = intent.getStringExtra("PLAYER_" + (i + 1) + "_NAME").toString()
-            val score = intent.getIntExtra("PLAYER_" + (i + 1) + "_SCORE", 0)
-            println("NAME: $name")
-            println("SCORE: $score")
+            val player: PlayerDClass? = intent.getParcelableExtra("PLAYER_" + (i + 1), PlayerDClass::class.java)
+            players.add(player)
         }
 
-        binding.winner.text = players[0]
-        binding.winner.text = players[1]
-        binding.winner.text = players[2]
-        binding.winner.text = players[3]
+        val sorted = players.sortedByDescending { it?.totalPoints }
+
+        for (i in 0..<nPlayers) {
+            println(sorted[i]?.name + " " + sorted[i]?.totalPoints)
+            labels[i].text = sorted[i]?.name
+        }
+
+
 
     }
 }

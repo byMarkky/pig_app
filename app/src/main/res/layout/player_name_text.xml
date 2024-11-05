@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/playerNameTemplate"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="66dp"
         android:gravity="center"
         android:text="TextView"
         android:textSize="24sp"

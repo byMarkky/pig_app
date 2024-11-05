@@ -2,9 +2,7 @@ package com.example.pig_marco_ramos
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
-import android.widget.SeekBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pig_marco_ramos.databinding.ActivityGameBinding
@@ -55,7 +53,7 @@ class GameActivity : AppCompatActivity() {
         for (i in 0..<nPlayers) {
             val name = intent.getStringExtra("PLAYER_$i")
             defaultPlayers[i].disable = false
-            defaultPlayers[i].label.text = name
+            defaultPlayers[i].label?.text = name ?: ""
             defaultPlayers[i].name = name
             println(intent.getStringExtra("PLAYER_$i"))
             players.add(i, defaultPlayers[i])
@@ -66,10 +64,6 @@ class GameActivity : AppCompatActivity() {
      * Method to start the game logic
      */
     private fun startGame() {
-
-        for (i in 0..<players.size) {
-            println(players[i])
-        }
 
         binding.roudnCounter.text = roundStr + ronda
 
@@ -91,7 +85,7 @@ class GameActivity : AppCompatActivity() {
             } else {
                 currentPlayer.currentPoints += random
             }
-            currentPlayer.currentPointsCounter.text = currentPlayer.currentPoints.toString()
+            currentPlayer.currentPointsCounter?.text = currentPlayer.currentPoints.toString()
         }
     }
 
@@ -102,6 +96,7 @@ class GameActivity : AppCompatActivity() {
 
         currentPlayerIndex += 1
 
+        currentPlayer.totalPoints += currentPlayer.currentPoints
         if (currentPlayerIndex > players.size - 1) {
             currentPlayerIndex = 0
             ronda += 1
@@ -115,32 +110,26 @@ class GameActivity : AppCompatActivity() {
         }
 
         // Update the total points
-        currentPlayer.totalPoints += currentPlayer.currentPoints
-        currentPlayer.totalPointsCounter.text = currentPlayer.totalPoints.toString()
+        //currentPlayer.totalPoints += currentPlayer.currentPoints
+        currentPlayer.totalPointsCounter?.text = currentPlayer.totalPoints.toString() ?: ""
 
         // Reset the current points to 0
         currentPlayer.currentPoints = 0
-        currentPlayer.currentPointsCounter.text = "0"
+        currentPlayer.currentPointsCounter?.text = "0" ?: ""
 
         currentPlayer = players[currentPlayerIndex]
     }   // holded
 
     private fun displayScores() {
-        getScores()
         val intent = Intent(this@GameActivity, WinnerActivity::class.java)
         intent.putExtra("PLAYER_NUMBER", players.size)
         for (i in 0..<players.size) {
-            intent.putExtra("PLAYER_" + (i + 1) + "_SCORE", players[i].totalPoints)
-            intent.putExtra("PLAYER_" + (i + 1) + "_NAME", players[i].name)
+            val playerName = "PLAYER_" + (i + 1)
+
+            intent.putExtra(playerName, PlayerDClass(players[i].name, players[i].totalPoints))
         }
         startActivity(intent)
     }
-
-    /**
-     * Method to determine which player won the game
-     */
-    private fun getScores() = players.sortedBy { it.totalPoints }
-
 
     /**
      * Method to display the dice face
