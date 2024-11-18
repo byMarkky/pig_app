@@ -1,5 +1,6 @@
 package com.example.pig_marco_ramos
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
@@ -32,7 +33,7 @@ class WinnerActivity : AppCompatActivity() {
 
         for (i in 0..<nPlayers) {
             println(sorted[i]?.name + " " + sorted[i]?.totalPoints)
-            labels[i].text = sorted[i]?.name
+            labels[i].text = "" + (i + 1) + ". " + sorted[i]?.name + " - Points: " + sorted[i]?.totalPoints
         }
 
 

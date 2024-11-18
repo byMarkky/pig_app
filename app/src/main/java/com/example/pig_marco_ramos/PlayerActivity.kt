@@ -16,6 +16,8 @@ class PlayerActivity : AppCompatActivity() {
         "Esteban Dido", "Elba Lazo", "Fermin Tado", "Lola Mento", "Luz Cuesta", "Margarita Flores",
         "Paco Tilla", "Pere Gil", "Pío Nono", "Salvador Tumbado", "Zoila Vaca"
     )
+
+    // Hashmap to know when all the recyclers view have been selected
     private val selectedItems = mutableMapOf<Int, Boolean>()
     private var totalRecyclers: Int = 0
     private var playerNumber = 0
@@ -27,12 +29,13 @@ class PlayerActivity : AppCompatActivity() {
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // GET NUMBER FROM OTHER ACTIVITY
+        // Get data from the previous activity
         playerNumber = intent.getIntExtra("PLAYER_NUMBER", 2)
         roundNumber = intent.getStringExtra("ROUND_NUMBER")
 
         totalRecyclers = playerNumber
 
+        // Array to store the data of the recyclers views and the players names
         val recyclers = arrayOf(
             PlayerSelector(binding.rvp1, binding.player1Player),
             PlayerSelector(binding.rvp2, binding.player2Player),
@@ -42,12 +45,14 @@ class PlayerActivity : AppCompatActivity() {
 
         for (i in 0..<playerNumber) {
             val adapter = CustomAdapter(defaultNames, i)  { recyclerIndex, isSelected, name ->
-                // Actualizar el estado de selección en el mapa
+                // Update the status of the names in the map
                 selectedItems[recyclerIndex] = isSelected
                 recyclers[i].title.text = name
-                // Verificar si todas las listas tienen una selección
+                // Check if all the recyclers have been selected
                 checkAllSelected(recyclers)
             }
+
+            // Config all the recyclers
             recyclers[i].recyclerView.layoutManager = LinearLayoutManager(this)
             recyclers[i].recyclerView.adapter = adapter
             recyclers[i].recyclerView.visibility = View.VISIBLE
@@ -56,9 +61,8 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun checkAllSelected(recyclers: Array<PlayerSelector>) {
-        // Verificar si todos los elementos tienen selección
+        // Check that all elements have one element selected
         if (selectedItems.size == totalRecyclers && selectedItems.values.all { it }) {
-            // Si todos están seleccionados, iniciar nueva actividad
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("ROUND_NUMBER", roundNumber)
             intent.putExtra("ROUND_NUMBER", roundNumber)

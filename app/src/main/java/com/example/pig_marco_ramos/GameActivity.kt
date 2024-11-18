@@ -49,6 +49,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun configPlayers() {
+        shufflePlayers()
         // Add and activate the players of the game
         for (i in 0..<nPlayers) {
             val name = intent.getStringExtra("PLAYER_$i")

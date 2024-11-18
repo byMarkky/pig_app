@@ -25,13 +25,14 @@ class MainActivity : AppCompatActivity() {
         val spinnerData = arrayOf("Select the number of players", 2, 3, 4)
 
         val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerData)
+        // Style for the dropdown menu of the spinner
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         val spinner = binding.spinner
-        spinner.setSelection(0)
+        spinner.setSelection(0)     // Set the spinner ball at the start
         spinner.adapter = aa
 
-
+        // Set an ANONYMOUS OBJECT as the listener, yes, anonymous object, WTF!!!
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val intent = Intent(this@MainActivity, PlayerActivity::class.java)
@@ -42,14 +43,12 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra("ROUND_NUMBER", roundText.toString())
                     startActivity(intent)
                 }
-
-                //showToast(message = spinnerData[p2].toString())
             }
 
+            // I think is impossible to execute this function, I hope.
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 showToast(message = "Nothing selected")
             }
-
         }
 
     }   // onCreate
