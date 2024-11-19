@@ -6,6 +6,8 @@ import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pig_marco_ramos.databinding.ActivityGameBinding
+import com.example.pig_marco_ramos.player.Player
+import com.example.pig_marco_ramos.player.PlayerDClass
 import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {

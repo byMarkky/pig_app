@@ -1,4 +1,4 @@
-package com.example.pig_marco_ramos
+package com.example.pig_marco_ramos.player
 
 import android.os.Build
 import android.os.Parcel

@@ -1,6 +1,5 @@
 package com.example.pig_marco_ramos
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
@@ -8,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pig_marco_ramos.databinding.ActivityWinnerBinding
+import com.example.pig_marco_ramos.player.PlayerDClass
 
 class WinnerActivity : AppCompatActivity() {
 

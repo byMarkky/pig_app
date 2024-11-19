@@ -1,12 +1,7 @@
-package com.example.pig_marco_ramos
+package com.example.pig_marco_ramos.player
 
-import android.annotation.SuppressLint
 import android.graphics.Color
-import android.os.Build
-import android.os.Parcel
-import android.os.Parcelable
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 
 class Player(
     var name: String?,

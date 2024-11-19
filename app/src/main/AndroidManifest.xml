@@ -18,7 +18,7 @@
             android:theme="@style/Theme.Pig_Marco_Ramos"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".IdentifyActivity"
+        <activity android:name=".identification.IdentifyActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -28,13 +28,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".identification.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.Pig_Marco_Ramos"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".identification.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.Pig_Marco_Ramos"
             android:screenOrientation="portrait">
