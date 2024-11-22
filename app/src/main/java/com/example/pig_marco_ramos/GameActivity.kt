@@ -114,11 +114,11 @@ class GameActivity : AppCompatActivity() {
 
         // Update the total points
         //currentPlayer.totalPoints += currentPlayer.currentPoints
-        currentPlayer.totalPointsCounter?.text = currentPlayer.totalPoints.toString() ?: ""
+        currentPlayer.totalPointsCounter?.text = currentPlayer.totalPoints.toString()
 
         // Reset the current points to 0
         currentPlayer.currentPoints = 0
-        currentPlayer.currentPointsCounter?.text = "0" ?: ""
+        currentPlayer.currentPointsCounter?.text = "0"
 
         currentPlayer = players[currentPlayerIndex]
     }   // holded

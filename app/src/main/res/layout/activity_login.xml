@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/loginName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.214" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.368" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/logButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loginText"

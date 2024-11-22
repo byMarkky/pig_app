@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/registerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.215" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/registerPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.358" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/termsCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Terminos y Servicio"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.616" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/regButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/registerText"
@@ -71,12 +71,15 @@
         app:layout_constraintVertical_bias="0.098" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/registerDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Birth Date"
         android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
+        android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

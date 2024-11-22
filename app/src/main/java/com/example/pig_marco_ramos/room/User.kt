@@ -1,7 +1,12 @@
 package com.example.pig_marco_ramos.room
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class User(
-    val id: Int,
-    val name: String,
-    val password: String
+    @PrimaryKey val id: Int,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "password") val password: String
 )
