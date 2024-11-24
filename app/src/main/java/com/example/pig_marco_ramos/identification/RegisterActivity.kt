@@ -94,8 +94,8 @@ class RegisterActivity : AppCompatActivity() {
             return false
         }
 
-        if (validatePassword(binding.registerPassword.text.toString())) {
-            errors.add("El nombre debe tener un minimo de 4 y maximo 10 caracteres")
+        if (!validatePassword(binding.registerPassword.text.toString())) {
+            errors.add("La contraseña tener un minimo de 4 y maximo 10 caracteres")
             return false
         }
 

@@ -45,6 +45,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.gridlayout)
     kapt("androidx.room:room-compiler:2.6.1")
 
     implementation(libs.androidx.core.ktx)

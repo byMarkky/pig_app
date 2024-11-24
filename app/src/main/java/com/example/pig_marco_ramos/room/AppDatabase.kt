@@ -27,7 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     AppDatabase::class.java,
-                    "user-database")
+                    "db_MRM")
                     .addMigrations(MIGRATION_1_2).build()
                 INSTANCE = instance
                 instance

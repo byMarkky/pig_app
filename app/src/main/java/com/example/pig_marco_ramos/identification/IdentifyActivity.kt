@@ -32,22 +32,6 @@ class IdentifyActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.button.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                val db = AppDatabase.getInstance(this@IdentifyActivity)
-                val userDao = db.getDao()
-                userDao.clean()
-                val users = userDao.getAll()
-                if (users.isEmpty()) {
-                    Log.d("USER", "DATABASE EMPTY")
-                } else {
-                    for (user in userDao.getAll()) {
-                        Log.d("USERS", "$user")
-                    }
-                }
-            }
-        }
-
     }
 
 }
