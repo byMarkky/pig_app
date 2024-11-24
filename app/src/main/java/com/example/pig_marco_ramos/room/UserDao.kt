@@ -18,7 +18,16 @@ interface UserDao {
     @Delete
     fun delete(user: User)
 
+    @Query("SELECT EXISTS(SELECT 1 FROM user WHERE TRIM(name) = TRIM(:name) AND TRIM(password) = TRIM(:password) LIMIT 1)")
+    fun exist(name: String, password: String): Boolean
+
+    @Query("SELECT EXISTS(SELECT 1 FROM user WHERE LOWER(TRIM(name)) = LOWER(TRIM(:name)) LIMIT 1)")
+    fun existsName(name: String): Boolean
+
     @Query("SELECT * FROM user")
     fun getAll(): List<User>
+
+    @Query("DELETE FROM user")
+    fun clean()
 
 }

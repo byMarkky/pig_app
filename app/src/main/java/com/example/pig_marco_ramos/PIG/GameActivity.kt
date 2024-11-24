@@ -1,10 +1,11 @@
-package com.example.pig_marco_ramos
+package com.example.pig_marco_ramos.PIG
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pig_marco_ramos.R
 import com.example.pig_marco_ramos.databinding.ActivityGameBinding
 import com.example.pig_marco_ramos.player.Player
 import com.example.pig_marco_ramos.player.PlayerDClass
@@ -139,7 +140,14 @@ class GameActivity : AppCompatActivity() {
      */
     private fun animateDiceImage(imageView: ImageView, randomNumber: Int) {
 
-        val diceImages = arrayOf(R.drawable.dice_1, R.drawable.dice_2, R.drawable.dice_3, R.drawable.dice_4, R.drawable.dice_5, R.drawable.dice_6)
+        val diceImages = arrayOf(
+            R.drawable.dice_1,
+            R.drawable.dice_2,
+            R.drawable.dice_3,
+            R.drawable.dice_4,
+            R.drawable.dice_5,
+            R.drawable.dice_6
+        )
 
         imageView.setImageResource(diceImages[randomNumber - 1])
         imageView.maxWidth = 100

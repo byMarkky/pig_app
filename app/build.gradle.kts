@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -42,8 +42,10 @@ android {
 
 dependencies {
 
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
     implementation(libs.androidx.room.runtime)
-    ksp (libs.androidx.room.compiler)
+    kapt("androidx.room:room-compiler:2.6.1")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -4,13 +4,19 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.icu.util.Calendar
+import android.os.Build
 import android.os.Bundle
 import android.widget.DatePicker
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDate
+import java.time.Period
 
 class DatePickerFragment(
     val listener: (day: Int, month: Int, year: Int) -> Unit
 ) : DialogFragment(), DatePickerDialog.OnDateSetListener {
+
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
         // P1: YEAR, P2: MONTH, P3: DAY
         listener(p3, p2, p1)

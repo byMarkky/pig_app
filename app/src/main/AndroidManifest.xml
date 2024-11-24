@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Pig_Marco_Ramos"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".PIG.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Pig_Marco_Ramos"
             android:screenOrientation="portrait">
@@ -40,18 +40,24 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".PlayerActivity"
+            android:name=".HubActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Pig_Marco_Ramos"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".PIG.PlayerActivity"
             android:exported="true"
             android:theme="@style/Theme.Pig_Marco_Ramos"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".GameActivity"
+            android:name=".PIG.GameActivity"
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".WinnerActivity"
+            android:name=".PIG.WinnerActivity"
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>

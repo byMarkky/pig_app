@@ -1,4 +1,4 @@
-package com.example.pig_marco_ramos
+package com.example.pig_marco_ramos.PIG
 
 import android.content.Intent
 import android.os.Bundle
