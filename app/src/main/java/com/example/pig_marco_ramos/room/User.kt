@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
 data class User(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "password") val password: String,
-    @ColumnInfo(name = "birthDate") val birthDate: String
+    @ColumnInfo(name = "birthDate") val birthDate: String,
+    @ColumnInfo(name = "image") val image: String?
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
         get() = field
