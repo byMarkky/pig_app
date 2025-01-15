@@ -3,12 +3,11 @@ package com.example.pig_marco_ramos.identification
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.pig_marco_ramos.api.Service
-import com.example.pig_marco_ramos.api.model.ResponseData
+import com.example.pig_marco_ramos.api.avatar.Service
+import com.example.pig_marco_ramos.api.avatar.model.ResponseData
 import com.example.pig_marco_ramos.databinding.ActivityRegisterBinding
 import com.example.pig_marco_ramos.datepicker.DatePickerFragment
 import com.example.pig_marco_ramos.room.AppDatabase

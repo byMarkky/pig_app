@@ -1,6 +1,6 @@
-package com.example.pig_marco_ramos.api
+package com.example.pig_marco_ramos.api.avatar
 
-import com.example.pig_marco_ramos.api.model.ResponseData
+import com.example.pig_marco_ramos.api.avatar.model.ResponseData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

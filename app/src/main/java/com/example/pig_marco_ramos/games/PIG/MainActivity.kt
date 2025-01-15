@@ -1,4 +1,4 @@
-package com.example.pig_marco_ramos.PIG
+package com.example.pig_marco_ramos.games.PIG
 
 import android.content.Context
 import android.content.Intent

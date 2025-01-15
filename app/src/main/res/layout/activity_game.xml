@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/red_title"
-    tools:context=".PIG.GameActivity">
+    tools:context=".games.PIG.GameActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
