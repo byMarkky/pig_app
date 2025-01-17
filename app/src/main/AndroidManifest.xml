@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,13 @@
         android:theme="@style/Theme.Pig_Marco_Ramos"
         tools:targetApi="31">
         <activity
-            android:name=".PIG.MainActivity"
+            android:name=".games.chuck.ChuckJokes"
+            android:exported="true"
+            android:theme="@style/Theme.Pig_Marco_Ramos"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".games.PIG.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Pig_Marco_Ramos"
             android:screenOrientation="portrait">
@@ -46,18 +54,18 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".PIG.PlayerActivity"
+            android:name=".games.PIG.PlayerActivity"
             android:exported="true"
             android:theme="@style/Theme.Pig_Marco_Ramos"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".PIG.GameActivity"
+            android:name=".games.PIG.GameActivity"
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".PIG.WinnerActivity"
+            android:name=".games.PIG.WinnerActivity"
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>
