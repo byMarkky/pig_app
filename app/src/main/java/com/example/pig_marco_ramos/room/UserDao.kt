@@ -18,6 +18,9 @@ interface UserDao {
     @Delete
     fun delete(user: User)
 
+    @Query("SELECT * FROM user u WHERE u.name = :name")
+    fun getUser(name: String): User
+
     @Query("SELECT EXISTS(SELECT 1 FROM user WHERE TRIM(name) = TRIM(:name) AND TRIM(password) = TRIM(:password) LIMIT 1)")
     fun exist(name: String, password: String): Boolean
 

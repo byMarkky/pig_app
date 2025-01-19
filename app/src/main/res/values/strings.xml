@@ -13,5 +13,9 @@
     <string name="registerText">Register</string>
     <string name="loginText">Login</string>
 
+    <string name="firebaseDocument">alumnosMRM</string>
+
+    <string name="google_id">243556162380-sa0m4hc7lgs2obshfud116p7lc5imefc.apps.googleusercontent.com</string>
+
 
 </resources>

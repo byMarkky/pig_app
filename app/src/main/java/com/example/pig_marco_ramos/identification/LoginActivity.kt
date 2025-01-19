@@ -74,7 +74,11 @@ class LoginActivity : AppCompatActivity() {
                         // Do here so the user can't see the changes
                         if (!remember.isChecked) lifecycleScope.launch { dataStoreManager.clearPreferences() }
 
+                        val user = userDao.getUser(name)
+                        Log.d("USER", "$user")
+
                         val intent = Intent(this@LoginActivity, HubActivity::class.java)
+                        intent.putExtra("USER", user)
                         startActivity(intent)
                     } else {
                         Snackbar.make(
