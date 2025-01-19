@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "243556162380",
+    "project_id": "dam2mrm",
+    "storage_bucket": "dam2mrm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243556162380:android:90685776b7015fd2e0cde9",
+        "android_client_info": {
+          "package_name": "com.example.pig_marco_ramos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243556162380-sa0m4hc7lgs2obshfud116p7lc5imefc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbIJVt-OqZtEXttwM_4_xKT8xAU2kItR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243556162380-sa0m4hc7lgs2obshfud116p7lc5imefc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243556162380:android:f7f47637302723a6e0cde9",
+        "android_client_info": {
+          "package_name": "com.proyecto.prueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243556162380-sa0m4hc7lgs2obshfud116p7lc5imefc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbIJVt-OqZtEXttwM_4_xKT8xAU2kItR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243556162380-sa0m4hc7lgs2obshfud116p7lc5imefc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

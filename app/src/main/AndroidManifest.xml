@@ -15,6 +15,24 @@
         android:theme="@style/Theme.Pig_Marco_Ramos"
         tools:targetApi="31">
         <activity
+        android:name=".firebase.FirebaseActivity"
+        android:exported="true"
+        android:theme="@style/Theme.Pig_Marco_Ramos"
+        android:screenOrientation="portrait">
+    </activity>
+        <activity
+            android:name=".firebase.GoogleActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Pig_Marco_Ramos"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".firebase.AnonymousActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Pig_Marco_Ramos"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".games.chuck.ChuckJokes"
             android:exported="true"
             android:theme="@style/Theme.Pig_Marco_Ramos"
