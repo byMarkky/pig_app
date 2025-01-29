@@ -1,17 +1,17 @@
 package com.example.pig_marco_ramos
 
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pig_marco_ramos.games.PIG.MainActivity
 import com.example.pig_marco_ramos.databinding.ActivityHubBinding
 import com.example.pig_marco_ramos.firebase.FirebaseActivity
+import com.example.pig_marco_ramos.games.PIG.MainActivity
 import com.example.pig_marco_ramos.games.chuck.ChuckJokes
+import com.example.pig_marco_ramos.media_app.camera.CameraActivity
 import com.example.pig_marco_ramos.room.User
 
 class HubActivity : AppCompatActivity() {
@@ -43,6 +43,12 @@ class HubActivity : AppCompatActivity() {
 
         binding.firebaseLaunchBtn.setOnClickListener {
             val intent = Intent(this@HubActivity, FirebaseActivity::class.java)
+            intent.putExtra("USER", user)
+            startActivity(intent)
+        }
+
+        binding.cameraLauncher.setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java)
             intent.putExtra("USER", user)
             startActivity(intent)
         }
