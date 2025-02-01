@@ -68,6 +68,41 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="105dp"
             android:layout_height="135dp"
+            app:layout_column="2"
+            app:layout_row="1">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/playerLauncher"
+                android:layout_width="103dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:foreground="@drawable/video_player_icon"
+                app:backgroundTint="@color/white"
+                app:fabCustomSize="78dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="70dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vide Player"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/playerLauncher" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="105dp"
+            android:layout_height="135dp"
             app:layout_column="1"
             app:layout_row="0">
 

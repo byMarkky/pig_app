@@ -45,6 +45,18 @@
         </provider>
 
         <activity
+            android:name=".media_app.videoPlayer.ReproductorActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Pig_Marco_Ramos"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".media_app.videoPlayer.VideoPlayerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Pig_Marco_Ramos"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".media_app.camera.CameraActivity"
             android:exported="true"
             android:theme="@style/Theme.Pig_Marco_Ramos"

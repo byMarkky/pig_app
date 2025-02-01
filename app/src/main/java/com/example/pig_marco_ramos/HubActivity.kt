@@ -12,6 +12,7 @@ import com.example.pig_marco_ramos.firebase.FirebaseActivity
 import com.example.pig_marco_ramos.games.PIG.MainActivity
 import com.example.pig_marco_ramos.games.chuck.ChuckJokes
 import com.example.pig_marco_ramos.media_app.camera.CameraActivity
+import com.example.pig_marco_ramos.media_app.videoPlayer.VideoPlayerActivity
 import com.example.pig_marco_ramos.room.User
 
 class HubActivity : AppCompatActivity() {
@@ -49,6 +50,12 @@ class HubActivity : AppCompatActivity() {
 
         binding.cameraLauncher.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
+            intent.putExtra("USER", user)
+            startActivity(intent)
+        }
+
+        binding.playerLauncher.setOnClickListener {
+            val intent = Intent(this, VideoPlayerActivity::class.java)
             intent.putExtra("USER", user)
             startActivity(intent)
         }
